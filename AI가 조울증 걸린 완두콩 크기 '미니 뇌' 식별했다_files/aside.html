@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<!-- saved from url=(0036)https://news.naver.com/aside?oid=584 -->
+<html lang="ko" data-useragent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"><script async="" src="./nlog.js.다운로드"></script><script async="" src="./nil-1.2.4.js.다운로드"></script><script async="" src="./ntm_b7032129a433.js.다운로드"></script><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/extend-native-history-api.js"></script><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/requests.js"></script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>네이버 뉴스</title>
+    
+
+
+<script>
+	function isMobileDevice() {
+		return /^.*(iPhone|iPod|iPad|Android).*/.test(navigator.userAgent);
+	}
+</script>
+<script>
+	(function () {
+		try {
+			if (isMobileDevice() && isAbleApplyPrefersColorScheme()) {
+				
+				document.querySelector("html").classList.add("DARK_THEME");
+			}
+		} catch(e) {}
+
+		function isAbleApplyPrefersColorScheme() {
+			
+			if (window.matchMedia("(prefers-color-scheme)").matches === false) {
+				return false;
+			}
+
+			var userAgent = navigator.userAgent;
+
+			if (userAgent.indexOf("NAVER") > -1) {
+				
+				if (/.*NAVER\([a-zA-Z]*;\s[a-zA-Z]*;\s([0-9]*);/.test(userAgent)) {
+					return Number(RegExp.$1) >= 1000;
+				}
+			} else {
+				
+				return document.cookie.indexOf("NSCS=1") > -1;
+			}
+
+			return false;
+		}
+	})();
+</script>
+<script>
+    var g_ssc = 'news.v3_aside' || null;
+    </script>
+    
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+
+<!--<base target="_top" bis_size="{&quot;x&quot;:0,&quot;y&quot;:0,&quot;w&quot;:0,&quot;h&quot;:0,&quot;abs_x&quot;:1320,&quot;abs_y&quot;:118}">--><base href="." target="_top">
+
+<link rel="shortcut icon" type="image/x-icon" href="https://mimgnews.pstatic.net/image/news/m/2023/favicon/favicon.ico">
+
+<link rel="stylesheet" type="text/css" href="./aside.css">
+    
+
+<script>
+
+document.documentElement.setAttribute('data-useragent', navigator.userAgent);
+
+
+function showNoImage(elImg, type) {
+    switch (type) {
+        
+        case "remove":
+            try {
+                elImg.parentNode.removeChild(elImg);
+            } catch(e) {}
+            break;
+
+        
+        case "removeParent":
+            try {
+                elImg.parentNode.outerHTML = '';
+            } catch(e) {}
+            break;
+
+        
+        case "alt":
+            elImg.outerHTML = ('<span class="noimage_text {imgClassName}">' + (elImg.alt || "") + '</span>')
+                
+                .replace('{imgClassName}', elImg.className);
+            break;
+
+		
+		case "class" :
+			var outerHTMLSource = Number(elImg.getAttribute("height")) > 0?
+				
+				'<span class="noimage_wrap {imgClassName}" style="height:' + elImg.getAttribute("height") + 'px;"><span class="noimage"></span></span>':
+				'<span class="noimage_wrap {imgClassName}"><span class="noimage"></span></span>';
+			elImg.outerHTML = outerHTMLSource.replace('{imgClassName}', elImg.className);
+			break;
+
+        case "pressname" :
+            var pressname = elImg.getAttribute("data-pressname");
+            elImg.outerHTML = '<span class="cnb_broadcast_noimg"><span class="noimg_text">' + pressname + '</span></span>';
+            break;
+
+        case "noHeight":
+            
+            elImg.outerHTML = '<span class="noimage_wrap"><span class="noimage"></span></span>';
+            break;
+
+        case "displayFallback":
+            elImg.style.display = "none";
+            var elWrapper = elImg.closest("._NOIMAGE_WRAPPER");
+            if (elWrapper) {
+                var elFallback = elWrapper.querySelector("._NOIMAGE_FALLBACK");
+                if (elFallback) {
+                    elFallback.style.display = "block";
+                }
+            }
+            break;
+
+        
+        default:
+            
+            elImg.outerHTML = Number(elImg.getAttribute("height")) > 0?
+                
+                '<span class="noimage_wrap" style="height:' + elImg.getAttribute("height") + 'px;"><span class="noimage"></span></span>':
+                '<span class="noimage_wrap"><span class="noimage"></span></span>';
+    }
+}
+
+
+function doAfterLoadEnd(callback, callbackOnPersisted) {
+    var eventName = "onpageshow" in window ? "pageshow" : "load";
+
+    callback = callback || function(){};
+    callbackOnPersisted = callbackOnPersisted || function(){};
+
+    window.addEventListener(eventName, function(e) {
+        try{
+            if(Boolean(e.persisted)){ 
+                callbackOnPersisted();
+                return;
+            }
+        }catch(e){}
+
+        callback();
+    });
+}
+</script>
+<script src="./aside.statistics.js.다운로드"></script>
+    <script bis_use="true" type="text/javascript" charset="utf-8" data-bis-config="[&quot;facebook.com/&quot;,&quot;twitter.com/&quot;,&quot;youtube-nocookie.com/embed/&quot;,&quot;//vk.com/&quot;,&quot;//www.vk.com/&quot;,&quot;linkedin.com/&quot;,&quot;//www.linkedin.com/&quot;,&quot;//instagram.com/&quot;,&quot;//www.instagram.com/&quot;,&quot;//www.google.com/recaptcha/api2/&quot;,&quot;//hangouts.google.com/webchat/&quot;,&quot;//www.google.com/calendar/&quot;,&quot;//www.google.com/maps/embed&quot;,&quot;spotify.com/&quot;,&quot;soundcloud.com/&quot;,&quot;//player.vimeo.com/&quot;,&quot;//disqus.com/&quot;,&quot;//tgwidget.com/&quot;,&quot;//js.driftt.com/&quot;,&quot;friends2follow.com&quot;,&quot;/widget&quot;,&quot;login&quot;,&quot;//video.bigmir.net/&quot;,&quot;blogger.com&quot;,&quot;//smartlock.google.com/&quot;,&quot;//keep.google.com/&quot;,&quot;/web.tolstoycomments.com/&quot;,&quot;moz-extension://&quot;,&quot;chrome-extension://&quot;,&quot;/auth/&quot;,&quot;//analytics.google.com/&quot;,&quot;adclarity.com&quot;,&quot;paddle.com/checkout&quot;,&quot;hcaptcha.com&quot;,&quot;recaptcha.net&quot;,&quot;2captcha.com&quot;,&quot;accounts.google.com&quot;,&quot;www.google.com/shopping/customerreviews&quot;,&quot;buy.tinypass.com&quot;,&quot;gstatic.com&quot;,&quot;secureir.ebaystatic.com&quot;,&quot;docs.google.com&quot;,&quot;contacts.google.com&quot;,&quot;github.com&quot;,&quot;mail.google.com&quot;,&quot;chat.google.com&quot;,&quot;audio.xpleer.com&quot;,&quot;keepa.com&quot;,&quot;static.xx.fbcdn.net&quot;,&quot;sas.selleramp.com&quot;,&quot;1plus1.video&quot;,&quot;console.googletagservices.com&quot;,&quot;//lnkd.demdex.net/&quot;,&quot;//radar.cedexis.com/&quot;,&quot;//li.protechts.net/&quot;,&quot;challenges.cloudflare.com/&quot;,&quot;ogs.google.com&quot;]" src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/executors/traffic.js"></script></head>
+
+<body __processed_a05b11cd-3489-44ab-b86f-39afb1540969__="true" bis_status="ok" bis_frame_id="468" bis_body_id="fr_wlmmkfjrqnbjdo8l5xk457" bis_depth="0" bis_chainid="1" bis_size="{&quot;x&quot;:0,&quot;y&quot;:0,&quot;w&quot;:148,&quot;h&quot;:527,&quot;abs_x&quot;:1320,&quot;abs_y&quot;:118}">
+<div class="_aside_wrapper" style="" bis_size="{&quot;x&quot;:0,&quot;y&quot;:0,&quot;w&quot;:148,&quot;h&quot;:527,&quot;abs_x&quot;:1320,&quot;abs_y&quot;:118}"><div class="news_common_aside _contents" style="" bis_size="{&quot;x&quot;:0,&quot;y&quot;:0,&quot;w&quot;:148,&quot;h&quot;:527,&quot;abs_x&quot;:1320,&quot;abs_y&quot;:118}"> 
+    <div class="subscriptionlist" bis_size="{&quot;x&quot;:0,&quot;y&quot;:0,&quot;w&quot;:148,&quot;h&quot;:343,&quot;abs_x&quot;:1320,&quot;abs_y&quot;:118}">
+            <div class="s_wrap" bis_size="{&quot;x&quot;:0,&quot;y&quot;:0,&quot;w&quot;:146,&quot;h&quot;:297,&quot;abs_x&quot;:1320,&quot;abs_y&quot;:118}">
+                <div class="s_title _other_press_title" bis_size="{&quot;x&quot;:15,&quot;y&quot;:20,&quot;w&quot;:119,&quot;h&quot;:17,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:138}">
+                    <div class="s_title_link" bis_size="{&quot;x&quot;:15,&quot;y&quot;:20,&quot;w&quot;:102,&quot;h&quot;:17,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:138}">
+                        <h5 class="s_h" bis_size="{&quot;x&quot;:15,&quot;y&quot;:21,&quot;w&quot;:77,&quot;h&quot;:14,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:139}">다른 언론사 보기</h5>
+                    </div>
+                    <button type="button" onclick="nclk(event, &#39;rig.yetmediaref&#39;, &#39;&#39;, &#39;&#39;)" class="s_refreshbutton _refresh_btn" bis_size="{&quot;x&quot;:111,&quot;y&quot;:13,&quot;w&quot;:31,&quot;h&quot;:31,&quot;abs_x&quot;:1431,&quot;abs_y&quot;:131}">새로보기</button>
+                </div>
+                <div class="_other_press_list" bis_size="{&quot;x&quot;:15,&quot;y&quot;:37,&quot;w&quot;:119,&quot;h&quot;:251,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:155}"><ul class="s_list _list" bis_size="{&quot;x&quot;:15,&quot;y&quot;:37,&quot;w&quot;:119,&quot;h&quot;:251,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:155}">
+    <li class="s_item" bis_size="{&quot;x&quot;:15,&quot;y&quot;:40,&quot;w&quot;:119,&quot;h&quot;:31,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:158}">
+        <a href="https://media.naver.com/press/011" class="s_item_a" onclick="nclk(event, &#39;rig.yetmedia&#39;, &#39;&#39;, &#39;&#39;)" bis_size="{&quot;x&quot;:15,&quot;y&quot;:40,&quot;w&quot;:119,&quot;h&quot;:31,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:158}">
+            <div class="s_item_thumb _NOIMAGE_WRAPPER" bis_size="{&quot;x&quot;:15,&quot;y&quot;:47,&quot;w&quot;:18,&quot;h&quot;:18,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:165}">
+                <span class="noimage_wrap" bis_size="{&quot;x&quot;:15,&quot;y&quot;:47,&quot;w&quot;:18,&quot;h&quot;:18,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:165}"><span class="noimage" bis_size="{&quot;x&quot;:15,&quot;y&quot;:47,&quot;w&quot;:18,&quot;h&quot;:18,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:165}"></span></span>
+            </div>
+            <div class="s_item_text" bis_size="{&quot;x&quot;:39,&quot;y&quot;:40,&quot;w&quot;:42,&quot;h&quot;:31,&quot;abs_x&quot;:1359,&quot;abs_y&quot;:158}">서울경제</div>
+        </a>
+    </li>
+    <li class="s_item" bis_size="{&quot;x&quot;:15,&quot;y&quot;:71,&quot;w&quot;:119,&quot;h&quot;:31,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:189}">
+        <a href="https://media.naver.com/press/346" class="s_item_a" onclick="nclk(event, &#39;rig.yetmedia&#39;, &#39;&#39;, &#39;&#39;)" bis_size="{&quot;x&quot;:15,&quot;y&quot;:71,&quot;w&quot;:119,&quot;h&quot;:31,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:189}">
+            <div class="s_item_thumb _NOIMAGE_WRAPPER" bis_size="{&quot;x&quot;:15,&quot;y&quot;:78,&quot;w&quot;:18,&quot;h&quot;:18,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:196}">
+                <span class="noimage_wrap" bis_size="{&quot;x&quot;:15,&quot;y&quot;:78,&quot;w&quot;:18,&quot;h&quot;:18,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:196}"><span class="noimage" bis_size="{&quot;x&quot;:15,&quot;y&quot;:78,&quot;w&quot;:18,&quot;h&quot;:18,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:196}"></span></span>
+            </div>
+            <div class="s_item_text" bis_size="{&quot;x&quot;:39,&quot;y&quot;:71,&quot;w&quot;:42,&quot;h&quot;:31,&quot;abs_x&quot;:1359,&quot;abs_y&quot;:189}">헬스조선</div>
+        </a>
+    </li>
+    <li class="s_item" bis_size="{&quot;x&quot;:15,&quot;y&quot;:102,&quot;w&quot;:119,&quot;h&quot;:31,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:220}">
+        <a href="https://media.naver.com/press/448" class="s_item_a" onclick="nclk(event, &#39;rig.yetmedia&#39;, &#39;&#39;, &#39;&#39;)" bis_size="{&quot;x&quot;:15,&quot;y&quot;:102,&quot;w&quot;:119,&quot;h&quot;:31,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:220}">
+            <div class="s_item_thumb _NOIMAGE_WRAPPER" bis_size="{&quot;x&quot;:15,&quot;y&quot;:109,&quot;w&quot;:18,&quot;h&quot;:18,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:227}">
+                <span class="noimage_wrap" bis_size="{&quot;x&quot;:15,&quot;y&quot;:109,&quot;w&quot;:18,&quot;h&quot;:18,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:227}"><span class="noimage" bis_size="{&quot;x&quot;:15,&quot;y&quot;:109,&quot;w&quot;:18,&quot;h&quot;:18,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:227}"></span></span>
+            </div>
+            <div class="s_item_text" bis_size="{&quot;x&quot;:39,&quot;y&quot;:102,&quot;w&quot;:36,&quot;h&quot;:31,&quot;abs_x&quot;:1359,&quot;abs_y&quot;:220}">TV조선</div>
+        </a>
+    </li>
+    <li class="s_item" bis_size="{&quot;x&quot;:15,&quot;y&quot;:133,&quot;w&quot;:119,&quot;h&quot;:31,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:251}">
+        <a href="https://media.naver.com/press/659" class="s_item_a" onclick="nclk(event, &#39;rig.yetmedia&#39;, &#39;&#39;, &#39;&#39;)" bis_size="{&quot;x&quot;:15,&quot;y&quot;:133,&quot;w&quot;:119,&quot;h&quot;:31,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:251}">
+            <div class="s_item_thumb _NOIMAGE_WRAPPER" bis_size="{&quot;x&quot;:15,&quot;y&quot;:140,&quot;w&quot;:18,&quot;h&quot;:18,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:258}">
+                <span class="noimage_wrap" bis_size="{&quot;x&quot;:15,&quot;y&quot;:140,&quot;w&quot;:18,&quot;h&quot;:18,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:258}"><span class="noimage" bis_size="{&quot;x&quot;:15,&quot;y&quot;:140,&quot;w&quot;:18,&quot;h&quot;:18,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:258}"></span></span>
+            </div>
+            <div class="s_item_text" bis_size="{&quot;x&quot;:39,&quot;y&quot;:133,&quot;w&quot;:47,&quot;h&quot;:31,&quot;abs_x&quot;:1359,&quot;abs_y&quot;:251}">전주MBC</div>
+        </a>
+    </li>
+    <li class="s_item" bis_size="{&quot;x&quot;:15,&quot;y&quot;:164,&quot;w&quot;:119,&quot;h&quot;:31,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:282}">
+        <a href="https://media.naver.com/press/047" class="s_item_a" onclick="nclk(event, &#39;rig.yetmedia&#39;, &#39;&#39;, &#39;&#39;)" bis_size="{&quot;x&quot;:15,&quot;y&quot;:164,&quot;w&quot;:119,&quot;h&quot;:31,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:282}">
+            <div class="s_item_thumb _NOIMAGE_WRAPPER" bis_size="{&quot;x&quot;:15,&quot;y&quot;:171,&quot;w&quot;:18,&quot;h&quot;:18,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:289}">
+                <span class="noimage_wrap" bis_size="{&quot;x&quot;:15,&quot;y&quot;:171,&quot;w&quot;:18,&quot;h&quot;:18,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:289}"><span class="noimage" bis_size="{&quot;x&quot;:15,&quot;y&quot;:171,&quot;w&quot;:18,&quot;h&quot;:18,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:289}"></span></span>
+            </div>
+            <div class="s_item_text" bis_size="{&quot;x&quot;:39,&quot;y&quot;:164,&quot;w&quot;:53,&quot;h&quot;:31,&quot;abs_x&quot;:1359,&quot;abs_y&quot;:282}">오마이뉴스</div>
+        </a>
+    </li>
+    <li class="s_item" bis_size="{&quot;x&quot;:15,&quot;y&quot;:195,&quot;w&quot;:119,&quot;h&quot;:31,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:313}">
+        <a href="https://media.naver.com/press/007" class="s_item_a" onclick="nclk(event, &#39;rig.yetmedia&#39;, &#39;&#39;, &#39;&#39;)" bis_size="{&quot;x&quot;:15,&quot;y&quot;:195,&quot;w&quot;:119,&quot;h&quot;:31,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:313}">
+            <div class="s_item_thumb _NOIMAGE_WRAPPER" bis_size="{&quot;x&quot;:15,&quot;y&quot;:202,&quot;w&quot;:18,&quot;h&quot;:18,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:320}">
+                <span class="noimage_wrap" bis_size="{&quot;x&quot;:15,&quot;y&quot;:202,&quot;w&quot;:18,&quot;h&quot;:18,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:320}"><span class="noimage" bis_size="{&quot;x&quot;:15,&quot;y&quot;:202,&quot;w&quot;:18,&quot;h&quot;:18,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:320}"></span></span>
+            </div>
+            <div class="s_item_text" bis_size="{&quot;x&quot;:39,&quot;y&quot;:195,&quot;w&quot;:21,&quot;h&quot;:31,&quot;abs_x&quot;:1359,&quot;abs_y&quot;:313}">일다</div>
+        </a>
+    </li>
+    <li class="s_item" bis_size="{&quot;x&quot;:15,&quot;y&quot;:226,&quot;w&quot;:119,&quot;h&quot;:31,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:344}">
+        <a href="https://media.naver.com/press/015" class="s_item_a" onclick="nclk(event, &#39;rig.yetmedia&#39;, &#39;&#39;, &#39;&#39;)" bis_size="{&quot;x&quot;:15,&quot;y&quot;:226,&quot;w&quot;:119,&quot;h&quot;:31,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:344}">
+            <div class="s_item_thumb _NOIMAGE_WRAPPER" bis_size="{&quot;x&quot;:15,&quot;y&quot;:233,&quot;w&quot;:18,&quot;h&quot;:18,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:351}">
+                <img src="./logo_015_100_20250307145644.png" class="s_item_img" alt="" onerror="showNoImage(this)" bis_size="{&quot;x&quot;:15,&quot;y&quot;:233,&quot;w&quot;:18,&quot;h&quot;:18,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:351}">
+            </div>
+            <div class="s_item_text" bis_size="{&quot;x&quot;:39,&quot;y&quot;:226,&quot;w&quot;:42,&quot;h&quot;:31,&quot;abs_x&quot;:1359,&quot;abs_y&quot;:344}">한국경제</div>
+        </a>
+    </li>
+    <li class="s_item" bis_size="{&quot;x&quot;:15,&quot;y&quot;:257,&quot;w&quot;:119,&quot;h&quot;:31,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:375}">
+        <a href="https://media.naver.com/press/353" class="s_item_a" onclick="nclk(event, &#39;rig.yetmedia&#39;, &#39;&#39;, &#39;&#39;)" bis_size="{&quot;x&quot;:15,&quot;y&quot;:257,&quot;w&quot;:119,&quot;h&quot;:31,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:375}">
+            <div class="s_item_thumb _NOIMAGE_WRAPPER" bis_size="{&quot;x&quot;:15,&quot;y&quot;:264,&quot;w&quot;:18,&quot;h&quot;:18,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:382}">
+                <span class="noimage_wrap" bis_size="{&quot;x&quot;:15,&quot;y&quot;:264,&quot;w&quot;:18,&quot;h&quot;:18,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:382}"><span class="noimage" bis_size="{&quot;x&quot;:15,&quot;y&quot;:264,&quot;w&quot;:18,&quot;h&quot;:18,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:382}"></span></span>
+            </div>
+            <div class="s_item_text" bis_size="{&quot;x&quot;:39,&quot;y&quot;:257,&quot;w&quot;:68,&quot;h&quot;:31,&quot;abs_x&quot;:1359,&quot;abs_y&quot;:375}">중앙SUNDAY</div>
+        </a>
+    </li>
+</ul></div>
+            </div>
+        <a href="https://media.naver.com/channel/settings" onclick="nclk(event, &#39;rig.editset&#39;, &#39;&#39;, &#39;&#39;)" class="s_settingbutton" bis_size="{&quot;x&quot;:0,&quot;y&quot;:297,&quot;w&quot;:146,&quot;h&quot;:44,&quot;abs_x&quot;:1320,&quot;abs_y&quot;:415}">구독 설정</a>
+    </div>
+    <div class="subscriptionlist" bis_size="{&quot;x&quot;:0,&quot;y&quot;:353,&quot;w&quot;:148,&quot;h&quot;:143,&quot;abs_x&quot;:1320,&quot;abs_y&quot;:471}">
+        <div class="s_wrap" bis_size="{&quot;x&quot;:0,&quot;y&quot;:354,&quot;w&quot;:146,&quot;h&quot;:142,&quot;abs_x&quot;:1320,&quot;abs_y&quot;:472}">
+            <div class="s_title _premium_recommend_title" bis_size="{&quot;x&quot;:15,&quot;y&quot;:374,&quot;w&quot;:119,&quot;h&quot;:17,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:492}">
+                <div class="s_title_link" bis_size="{&quot;x&quot;:15,&quot;y&quot;:374,&quot;w&quot;:102,&quot;h&quot;:17,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:492}">
+                    <h5 class="s_h" bis_size="{&quot;x&quot;:15,&quot;y&quot;:375,&quot;w&quot;:87,&quot;h&quot;:14,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:493}">프리미엄 추천 채널</h5>
+                </div>
+                <button type="button" onclick="nclk(event, &#39;rig.recpremiumref&#39;, &#39;&#39;, &#39;&#39;)" class="s_refreshbutton _refresh_btn" bis_size="{&quot;x&quot;:111,&quot;y&quot;:367,&quot;w&quot;:31,&quot;h&quot;:31,&quot;abs_x&quot;:1431,&quot;abs_y&quot;:485}">새로보기</button>
+            </div>
+            <div class="_premium_recommend_list" bis_size="{&quot;x&quot;:15,&quot;y&quot;:391,&quot;w&quot;:119,&quot;h&quot;:96,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:509}"><ul class="s_list _list" bis_size="{&quot;x&quot;:15,&quot;y&quot;:391,&quot;w&quot;:119,&quot;h&quot;:96,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:509}">
+    <li class="s_item" bis_size="{&quot;x&quot;:15,&quot;y&quot;:394,&quot;w&quot;:119,&quot;h&quot;:31,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:512}">
+        <a href="https://contents.premium.naver.com/salarymoney/moneystock" class="s_item_a" onclick="nclk(event, &#39;rig.recpremiumchl&#39;, &#39;&#39;, &#39;&#39;)" bis_size="{&quot;x&quot;:15,&quot;y&quot;:394,&quot;w&quot;:119,&quot;h&quot;:31,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:512}">
+            <div class="s_item_thumb _NOIMAGE_WRAPPER" bis_size="{&quot;x&quot;:15,&quot;y&quot;:400,&quot;w&quot;:18,&quot;h&quot;:18,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:518}">
+                <img src="./image_premium_channel_salarymoney_2023_09_11_1694436932699.jpg" class="s_item_img" alt="" onerror="showNoImage(this)" bis_size="{&quot;x&quot;:15,&quot;y&quot;:400,&quot;w&quot;:18,&quot;h&quot;:18,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:518}">
+            </div>
+            <div class="s_item_text" bis_size="{&quot;x&quot;:39,&quot;y&quot;:394,&quot;w&quot;:95,&quot;h&quot;:31,&quot;abs_x&quot;:1359,&quot;abs_y&quot;:512}">주식으로 월급벌자 (차트의 神)</div>
+        </a>
+    </li>
+    <li class="s_item" bis_size="{&quot;x&quot;:15,&quot;y&quot;:425,&quot;w&quot;:119,&quot;h&quot;:31,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:543}">
+        <a href="https://contents.premium.naver.com/highprotein/protein" class="s_item_a" onclick="nclk(event, &#39;rig.recpremiumchl&#39;, &#39;&#39;, &#39;&#39;)" bis_size="{&quot;x&quot;:15,&quot;y&quot;:425,&quot;w&quot;:119,&quot;h&quot;:31,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:543}">
+            <div class="s_item_thumb _NOIMAGE_WRAPPER" bis_size="{&quot;x&quot;:15,&quot;y&quot;:431,&quot;w&quot;:18,&quot;h&quot;:18,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:549}">
+                <img src="./image_premium_channel_highprotein_2023_08_19_1692393667184.png" class="s_item_img" alt="" onerror="showNoImage(this)" bis_size="{&quot;x&quot;:15,&quot;y&quot;:431,&quot;w&quot;:18,&quot;h&quot;:18,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:549}">
+            </div>
+            <div class="s_item_text" bis_size="{&quot;x&quot;:39,&quot;y&quot;:425,&quot;w&quot;:95,&quot;h&quot;:31,&quot;abs_x&quot;:1359,&quot;abs_y&quot;:543}">고단백의 너무 쉬운 돈버는 부동산</div>
+        </a>
+    </li>
+    <li class="s_item" bis_size="{&quot;x&quot;:15,&quot;y&quot;:456,&quot;w&quot;:119,&quot;h&quot;:31,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:574}">
+        <a href="https://contents.premium.naver.com/junseokstock/junseok" class="s_item_a" onclick="nclk(event, &#39;rig.recpremiumchl&#39;, &#39;&#39;, &#39;&#39;)" bis_size="{&quot;x&quot;:15,&quot;y&quot;:456,&quot;w&quot;:119,&quot;h&quot;:31,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:574}">
+            <div class="s_item_thumb _NOIMAGE_WRAPPER" bis_size="{&quot;x&quot;:15,&quot;y&quot;:462,&quot;w&quot;:18,&quot;h&quot;:18,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:580}">
+                <img src="./image_premium_channel_junseokstock_2025_05_09_1746766308053.png" class="s_item_img" alt="" onerror="showNoImage(this)" bis_size="{&quot;x&quot;:15,&quot;y&quot;:462,&quot;w&quot;:18,&quot;h&quot;:18,&quot;abs_x&quot;:1335,&quot;abs_y&quot;:580}">
+            </div>
+            <div class="s_item_text" bis_size="{&quot;x&quot;:39,&quot;y&quot;:456,&quot;w&quot;:71,&quot;h&quot;:31,&quot;abs_x&quot;:1359,&quot;abs_y&quot;:574}">급등주 준석TV</div>
+        </a>
+    </li>
+</ul></div>
+        </div>
+    </div>
+</div></div>
+<script src="./aside.vendor.js.다운로드"></script>
+        <script src="./aside.main.js.다운로드"></script>
+    <script>
+doAfterLoadEnd(function(){
+    Aside("/channel/rightbar?officeId=584");
+});
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+    window.ntm_news = window.ntm_news || [];
+
+    doAfterLoadEnd(function () {
+        var ntmUrl = "https://ntm.pstatic.net/scripts/ntm_b7032129a433.js";
+
+        
+        
+        
+
+        ntmInit(ntmUrl);
+    });
+</script>
+
+
+</body></html>
