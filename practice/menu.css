@@ -1,0 +1,10 @@
+.center {text-align: center; color:rgb(46, 226, 43);}
+table.center2 {margin-left: auto; margin: auto; border-collapse: collapse; table-layout: fixed; width: 800px;}
+td,th {text-align: center; width: 220px; height: 70px;}
+.center3 {text-align: center;}
+.c1 {background-color: pink;}
+.c2 {background-color: orange;}
+.c3 {background-color: yellow;}
+.c4 {background-color: aqua;}
+.c5 {background-color:violet;}
+a:link {color: crimson;}
