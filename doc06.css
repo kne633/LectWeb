@@ -1,0 +1,6 @@
+    h3 {font-style:italic;}
+    p {font-size: 20pt;}
+    strong {font-style: italic;}
+    #article1 {font-weight: bold;} /* id 접근 */
+    .keyword {color: aquamarine;} /* class 접근 */
+    a:visited {color:black; text-decoration: none;} /*a라는 태그에 접근한뒤 글자 수정 코드*/
