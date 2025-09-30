@@ -1,0 +1,9 @@
+/*ol {list-style-type: upper-alpha;}*/
+a:link {color: green;}
+a:visited {color:black;}
+.key {color: blue; text-decoration: underline;}
+.in {
+    list-style-type: upper-alpha;
+    list-style-position: inside; 
+    padding-left: 0;
+    margin-top: 0;}
