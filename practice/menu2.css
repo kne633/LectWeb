@@ -11,5 +11,5 @@ td {text-align: center; width: 160px; height: 160px;}
 .c5 {background-color:violet;}
 th {height: 20px;}
 tr.size th {width: 80px;}
-.text:hover {color:white; background-color:black; font-weight: bold; cursor: pointer;}
-.favorite {color:white; font-style:italic; font-weight: bold; text-decoration: underline; text-shadow: 2px 3px 3px gold; }
+.h:hover {color:white; background-color:black; font-weight: bold; cursor: pointer;}
+.favorite {color:white; font-style:italic; font-weight: bold; text-decoration: underline; text-shadow: 2px 3px 3px gold;}
