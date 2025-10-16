@@ -1,7 +1,6 @@
 .center {text-align: center; color:rgb(46, 226, 43); text-shadow: 0px 5px 7px greenyellow; }
-table.center2 {margin-left: auto; margin: auto; border-collapse: collapse; /*table-layout: fixed; width: 800px;*/}
+table.center2 {margin-left: auto; margin: auto; border-collapse: collapse;}
 td {text-align: center; width: 160px; height: 160px;}
-.center3 {text-align: center;}
 .c {background-color:pink;}
 .c0 {background-color:antiquewhite}
 .c1 {background-color: orange;}
@@ -13,3 +12,6 @@ th {height: 20px;}
 tr.size th {width: 80px;}
 .h:hover {color:white; background-color:black; font-weight: bold; cursor: pointer;}
 .favorite {color:white; font-style:italic; font-weight: bold; text-decoration: underline; text-shadow: 2px 3px 3px gold;}
+caption {color: gray;}
+a:link {color: gray; text-decoration-color: blue;} 
+a:visited {color:gray; text-decoration-color: blue;}
