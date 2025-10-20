@@ -1,0 +1,69 @@
+li {font-style: italic; font-weight: bold; 
+    text-decoration: underline; color: skyblue;}
+strong.ex1 {color: coral; font-size: 30px;}
+#ex2 {background-color: blue; color: white; 
+    text-align: center;}
+a:link {color: greenyellow;}
+a:visited {color: aqua; text-decoration: underline;}
+ol li:hover {font-weight: bold; color: red;}
+/*마우스 :active :hover :focus
+  특정요소 앞뒤콘텐츠 삽입 :before :after*/
+h3:before {content: "⏹"; color: pink;}
+h3:after {content: "(©sblim)"; font-size: 10pt;}
+.ex3 {font-variant: normal, small-caps}
+/*영어 소문자->작은대문자, 폰트가 추가되어야 사용가능
+transparent 투명색*/
+ul li {list-style-type: circle; list-style-position: outside;}
+/*disc 검은색동그라미   circle은 빈 동그라미   square 검은색 네모
+decimal 123   lower-roman i ii   upper-alpha ABC*/
+div p {display: inline; background-color: yellow;padding: 10px;
+        border: thin dotted red;
+    border-top-left-radius: 8px; border-bottom-right-radius: 8px;
+    box-shadow: 8px 8px 20px 2px blue inset;}
+#next {display: inline;line-height: 12pt;margin-left: 30%;padding: 8px;
+        border: 4px inset green;}
+strong{display: block;background-color: silver; margin: 10px;padding: 6px;
+transition: none;}
+strong:hover { background-color: #999; border-color: black;
+transition: border 4s, background-color 8s;}
+.red1 {display: block;background-color: silver; padding: 6px; margin: 10px;
+              border: 1px solid black;}
+#imgfix {position: fixed; top: 20px; right: 30px;
+        opacity: 0.5; }
+#imgfix:hover { transition: width 4s; width: 200px};
+
+/* position static기본 absolute 상위요소 relative 상대위치 fixed고정 
+float 주변콘텐츠와 별도로 분리하여 배치
+overflow visible hidden scroll auto
+
+solid 색깔박스 dotted 점선 dashed 긴점선 double 박스두개
+inset 위왼검정 아래오른 색깔  ouset 그반대
+ridge 검정박스 큰색깔박스 groove 그반대*/
+
+/*
+<style type="text/css"> 
+    ul.outside-list { list-style-position: outside }
+    ul.inside-list { list-style-position: inside } 
+    li.usa { list-style-image: url("flag_usa.gif") }
+    li.kor { list-style-image: url("flag_kor.gif") }
+    p { font-weight: bold }
+ </style>*/
+
+ /*table-layout: auto(기본값) fixed
+ border-spacing 셀들의 간격 테두리굵기
+ border-collapse 셀의 테두리 분리 collapse separate(기본값)
+empty-cells 빈셀의 테두리 show(기본값) hide
+
+내부여백 padding 외부공백 margin
+
+테두리 지정 줄여쓰기 border: width style color
+border-top-width 해당영역만 두껍게
+
+
+ transition: border 4s, background-color 8s; 
+ transition: width 4s;
+ 
+#h5_trans  { transform: 이동translate(30px,30px); border: thin solid; } 
+#h5_scale  { transform: 크기scale(3, 1.5); border: thin solid; } 
+#h5_rotate { transform: 회전rotate(45deg); border: thin solid; } 
+#h5_skew  { transform: 기울임skew(30deg, 5deg); border: thin solid; }*/

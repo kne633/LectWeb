@@ -1,0 +1,8 @@
+body { background-color:#BBBBBB; border:double; margin:10px; }
+header { background-color:#FFFF99; text-align:center; margin:5px; padding:5px; }
+nav { display:block;  width: 20%; background-color:#99FF99;  float: left; }
+nav a { display:block; padding: 2px;  border:solid; border-width:thin; }
+article { display:block; width:55%; background-color:#FFCC99;  float:left; margin:10px; }
+section { display:block; background-color:#FFFFFF; margin:8px; padding:6px; }
+aside { display:block; width:18%; background-color:#AAFFAA; float:right; margin:5px; }
+footer { clear:both; background-color:#FFFF99; text-align:center; margin:5px; }
