@@ -1,0 +1,8 @@
+ul {text-align:right; background-color: green; 
+    color: #55117F;
+    border: 2 dashed silver; border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px; 
+    width: auto; transition: transform 3s;}
+ul:hover {transform: rotate(180deg); opacity: 0.2;}
+li {list-style-type: square; list-style-position: inside;}
+ul:not(:hover) {transition: none;}

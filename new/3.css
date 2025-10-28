@@ -1,0 +1,7 @@
+body {text-align: center;}
+p { font-size: 18px; font-family: "Malgun Gothic", "맑은 고딕", sans-serif;}
+.TextPink {color: black; font-weight: bold; background-color: pink;}
+.TextBabypink {color: #000000; font-weight: bold; background-color: orange;}
+.TextYellow {color: black; background-color: yellow;}
+.st {font-weight: bold; text-decoration: underline;}
+.imgfix {position: fixed; bottom: 10px; right: 20px;}
