@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <h3>다양한 입력 폼</h3>
+            <form method="get" action="https://lib.smu.ac.kr/Search" name="lib">
+                <fieldset>
+                    <legend>개인정보</legend>
+                    성명: <input type="text" name="q" placeholder="성명"/><br> 
+                    <!--q로 설정함으로써 이어지는 링크의 검색창에 이름값이 입력됨-->
+                    <!--value는 기본값 password는 값을 다 드러냄, 안전을위해서는 post형식 사용-->
+                    <input type="hidden" name="hidden" value="checkbox"/>
+                    성별: <input type="radio" name="sex" value="male" checked/>남성
+                    <!--checked를 사용할 경우 먼저 앞의 값이 체크되어 있음-->
+                            <input type="radio" name="sex" value="female"/>여성
+                    직업: <select name="job" size="1">
+                            <option>학생</option><option>회사원</option>
+                            <option>공무원</option><option>기타</option>
+                        </select>
+                </fieldset>
+
+            <fieldset disabled>
+                <legend>구입희망분야</legend>
+                <p>구입희망분야(복수선택 가능)<br>
+                - 분야: <input type="checkbox" name="books" value="computer"/>컴퓨터
+                        <input type="checkbox" name="books" value="economy"/>경제
+                        <input type="checkbox" name="books" value="common"/>상식<br>
+                비고: <br>
+                        <textarea name="comments" rows="4" cols="40"/></textarea>
+                        </p><hr>
+            </fieldset>
+                    <input type="submit" value="신청"/>
+                    <input type="reset" value="취소"/>
+                    <input type="image" src="button.jpg"/>
+            </form>
+    </body>
+</html>
