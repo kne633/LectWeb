@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>자바연습</title>
+    </head>
+    <body>
+        <script type="text/javascript"> //src="myscript.js"
+            document.write("Hello, welcome to the javascript world!");
+            var first_name="steve";
+            var last_name="jobs";
+            var full_name1= first_name + " " + last_name;
+            var full_name2=last_name+","+first_name;
+            document.write("<br/>");
+            document.write(full_name1 + "<br/>");
+            document.write(full_name2);
+
+            //경고창 생성
+            alert("웹프로그래밍\n웹사이트로 이동합니다.");
+
+            //확인입력받기
+            var answer = confirm("주문한 서적을 결재하시겠습니까?");
+            document.write("Answer= " +answer+"<br/>");
+
+            //문자열입력받기
+            var answer = prompt("서적 제목을 입력해 주세요.","모바일 멀티미디어");
+            document.write("Answer=" +answer +"<br/>");
+
+
+        </script>
+    </body>
+</html>

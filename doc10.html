@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DOM Tree</title>
+    </head>
+    <body>
+        <article>
+            <h3 id="h3key">베스트셀러</h3>
+            <!--<h3 id="h3key" style="color: blue;">베스트셀러</h3>-->
+            <ol>
+                <li id="book1">컴퓨터와 IT기술의 이해[개정판-2판]</li>
+                <li id="book2">모바일 멀티미디어</li>
+                <li id="book3">소셜미디어의 이해와 활용</li>
+            </ol>
+
+            <form>
+                <input id="input_countup" type="button" value="버튼"/> <!--onclick="alert('누름');
+                                                          //alert('누름2');">-->
+                <!--라인을 실행할때는 끝에 세미콜론이 들어가야함-->
+            </form>
+
+        </article>
+
+        <script type="text/javascript">
+            num=4;
+            function countup() {
+                //num=num+1;
+                //setTimeout(countup,1000);
+                dom = document.getElementById("h3key");
+                dom.innerHTML ="베스트셀러"+num;
+             } //함수가 여러개인경우 value안됨
+            /*function temp(){
+                num=num+1;
+                countup(num);
+            }*/
+            dominput = document.getElementById("input_countup");
+            //dominput.onclick = function(){
+            //                                num=num+1;
+            //                                countup(num);
+            //                            }; //함수 이름만 넣을 수 있음
+            dominput.addEventListener("click",function(){num=num+1;countup(num);});
+            //dom이 h3임
+            //dom = document.getElementById("h3key");
+            //dom.style.color = "red"; //자바스크립 코드로 디자인 설정
+            //자바스크립은 객체기반언어
+            //dom.innerHTML = "AA"; 태그와 태그사이의 값 (출력이 바뀜)
+            //dom.innerHTML += "3"; //값 추가
+        </script>
+
+        <!--<form>
+            <input id="op1" type="text" size="2">+
+            <input id="oper" type="select" size="1" 추가한부분
+            <input id="op2" type="text" size="2">
+            <input id="cal" type="button" value="=">
+            <input id="result" type="text" size="2">
+        </form>-->
+
+    </body>
+</html>
