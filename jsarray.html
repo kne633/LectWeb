@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script type="text/javascript">
+            var arr = new Array("one",2,"3",4,"five");
+            // arr 내용 = ["one", 2, "3", 4, "five"]
+            arr[6]=6;
+            arr[7]="seven";
+            arr[9]="3+6";
+            // arr 내용: ["one", 2, "3", 4, "five", undefined, 6, "seven", undefined, "3+6"]
+            //배열의 길이는 10개
+            document.write("length of array: "+arr.length+"<br/>");
+            //write 대신 writeIn 써도 무방
+            document.write("arr=[");
+            for(i=0;i<arr.length;i++)document.write(" "+arr[i]+" ");
+            document.write("]<br/>");
+
+            arr.length=3;
+            document.write("length of array: "+arr.length+"<br/>");
+
+            document.write("arr=[");
+            for(i=0;i<arr.length;i++)document.write(" "+arr[i]+" ");
+            document.write("]<br/>");
+
+            document.write("arr["+100+"]: "+arr[100]+"<br/>");
+            document.write("length of array: "+arr.length+"<br/>");
+
+            arr[100]=100;
+            document.write("arr["+100+"]:"+arr[100]+"<br/>");
+            document.write("length of array: "+arr.length+"<br/>");
+        </script>
+    </body>
+</html>
+
+    <!--dom(돔) 개념: html.body.article.ol.li-->
+    <!--id는 변수-->
+    <!--자바스크립트에서는 문서를 코드로 바라봄-->
