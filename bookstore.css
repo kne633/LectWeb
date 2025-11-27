@@ -1,0 +1,11 @@
+#name {color: blue; font-size: 30pt; text-decoration: none;}
+.menu {display: flex; align-items: center; background: aqua;padding: 10px; gap: 20px}
+.menu a {color: black; text-decoration: none; margin-left: 20px;}
+#order {margin-left: auto;}
+.top {display: flex; align-items: center;}
+.join {text-decoration: none; margin-left: 5px;}
+#j1 {margin-left: auto;}
+.sidemenu {display: flex; flex-direction: column; width: 90px; 
+           position: absolute; right: 15px; top: 140px;}
+.sidemenu button {padding: 5px;}
+.link_img {display: block; text-align: right;} 
