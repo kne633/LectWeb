@@ -1,12 +1,17 @@
-#name {color: blue; font-size: 30pt; text-decoration: none;}
-.menu {display: flex; align-items: center; background: aqua;padding: 10px; gap: 20px}
+.every { max-width: 900px; margin: 0 auto; 
+    position: relative; width: 100%; padding: 0 10px; box-sizing: border-box; }
+iframe[name="display_k"]{display:block; margin: 20px auto;}
+
+#name {color: blue; font-size: 30pt; text-decoration: none; font-weight: bold;}
+.menu {display: flex; align-items: center; background: aqua;padding: 10px 0; 
+    gap: 20px; margin-bottom: 10px;}
 .menu a {color: black; text-decoration: none; margin-left: 20px;}
-#side {margin-left: auto;}
-.top {display: flex; align-items: center;}
+#side {margin-left: auto; margin-right: 20px;}
+.top {display: flex; align-items: center; justify-content: space-between; padding: 10px 0;}
 .join {text-decoration: none; margin-left: 5px;}
 #j1 {margin-left: auto;}
 .sidemenu {display: flex; flex-direction: column; width: 90px; 
-           position: absolute; right: 15px; top: 140px;}
+           position: absolute; right: 15px; top: 140px; z-index: 10;}
 .sidemenu button {padding: 5px;}
 #locate {font-size: 11px;}
 
@@ -22,6 +27,6 @@
 #login fieldset span { display: inline-block; }
 
 .memo {display: none;position: fixed; right: 20px; bottom: 20px;
-    transform: translate(-50%, -50%);background: white;padding: 20px;
+    background: white;padding: 20px;
     border: 1px solid #ccc;z-index: 999; width: 250px;}
 .memo textarea{width: 250px;height: 150px;}
