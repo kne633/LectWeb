@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="bookstore.css">
+        <link rel="stylesheet" type="text/css" href="book.css">
+        <title>Welcome to 나은서점</title>
+    </head>
+    <body>
+        <div class="top">
+            <a id="name" href="bookstore.html">나은 서점</a>
+            <a class="join" id="j1" href="login.html" target="display_k">로그인</a > | 
+                <a class="join" href="">회원가입</a>
+        </div>
+        <div class="menu">
+            <a href="korean.html" target="display_k">국내도서</a>
+            <a href="foreign.html" target="display_k">해외번역도서</a>
+            <a href="music.html" target="display_k">음반/DVD</a>
+            <a id="side" href="order.html" target="display_k">주문하기</a>
+        </div>
+        <hr>
+        <div class="sidemenu">
+            <button onclick="document.getElementsByName('display_k')[0].src='all.html'">전체</button>
+            <button onclick="document.getElementsByName('display_k')[0].src='best.html'">베스트셀러</button>
+            <button onclick="document.getElementsByName('display_k')[0].src='pick.html'">추천도서</button>
+            <button onclick="showmemo()">메모하기</button>
+            <button onclick="getLocation()">현재위치</button>
+            <div id="locate"></div>
+        </div>
+        <script type="text/javascript">
+            function getLocation() { 
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(myCallback);
+                } else {
+                    alert("지오로케이션이지원되지않습니다.");
+                }   
+            }
+            function myCallback(myPosition) {
+                var latitude = myPosition.coords.latitude;
+                var longitude = myPosition.coords.longitude;
+                    
+                document.getElementById("locate").innerHTML = 
+                    '위도: ' + latitude + '경도: ' + longitude;
+            }
+        </script>
+
+        <iframe name="display_k" src="img/naeunstore.jpg" width="600" height="539" alt="서점사진"></iframe>
+        <hr>
+        <a class="link_img" href="https://github.com/kne633">
+            <img src="img/github.jpg" height="70" alt="Github">
+        </a>
+        <div id="memobox" class="memo">
+            <h3>메모</h3>
+            <textarea placeholder="서점 메인페이지로 이동시 메모가 초기화 됩니다."></textarea><br>
+            <button onclick="closememo()">닫기</button>
+        </div>
+        <script type="text/javascript">
+            function showmemo() {
+                document.getElementById("memobox").style.display = "block";
+            }
+            function closememo() {
+                document.getElementById("memobox").style.display = "none";
+            }
+        </script>
+    </body>
+</html>

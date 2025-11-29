@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="bookstore.css">
+        <link rel="stylesheet" type="text/css" href="book.css">
+        <script type="text/javascript">
+        window.onload = function(){
+        var myAudio = document.getElementById("myaudio"),
+            playBtn1 = document.getElementById("playbtn1"),
+            volumeCtrl1 = document.getElementById("volctrl1"),
+            timeDiv1 = document.getElementById("time1");
+
+        var myVideo = document.getElementById("myvideo"),
+            playBtn = document.getElementById("playbtn"),
+            volumeCtrl = document.getElementById("volctrl"),
+            timeDiv = document.getElementById("time");
+   
+        myAudio.addEventListener("timeupdate", updateTime_a);
+        playBtn1.addEventListener("click", play_a);
+        volumeCtrl1.addEventListener("change", updateVolume_a);    
+
+        myVideo.addEventListener("timeupdate", updateTime);
+        playBtn.addEventListener("click", play);
+        volumeCtrl.addEventListener("change", updateVolume);
+		
+        function updateTime_a(){
+	        timeDiv1.innerHTML = Math.floor(myAudio.currentTime) + "/" + Math.floor(myAudio.duration) + "(초)";
+        }
+        function updateTime(){
+	        timeDiv.innerHTML = Math.floor(myVideo.currentTime) + "/" + Math.floor(myVideo.duration) + "(초)";
+        }
+
+        function play_a(){
+	        if(myAudio.paused){
+		        playBtn1.innerHTML = "일시정지";
+		        myAudio.play();
+            }else{
+	        	playBtn1.innerHTML = "재생";
+		        myAudio.pause();
+	        }
+        }
+        function play(){
+	        if(myVideo.paused){
+		        playBtn.innerHTML = "일시정지";
+		        myVideo.play();
+            }else{
+	        	playBtn.innerHTML = "재생";
+		        myVideo.pause();
+	        }
+        }
+
+        function updateVolume_a() {
+	        myAudio.volume = volumeCtrl1.value;
+        }
+        function updateVolume() {
+	        myVideo.volume = volumeCtrl.value;
+        }
+    }
+    </script>
+    </head>
+    <body class="booklist musiclist aerialview">
+        <div class="head">음반/DVD</div>
+        <ul>
+            <li>
+            <img height="200"
+                src="img/tree.jpg"/>
+            <br/>
+            sigmaMusicArt - Christmas<br/>
+            <audio id="myaudio" src="img/christmas.mp3"></audio>
+                <button id="playbtn1">재생</button>
+                재생시간/총시간:&nbsp;<span id="time1"></span><br>
+                볼륨:&nbsp;<input id="volctrl1" type="range" max="1" step="any">
+            </li>
+            <li>
+            <video id="myvideo" width="250" src="img/bird.mp4"></video><br/>
+            <button id="playbtn">재생</button>
+            재생시간/총시간:&nbsp;<span id="time"></span><br>
+            볼륨:&nbsp;<input id="volctrl" type="range" max="1" step="any">
+        </ul>
+    </body>

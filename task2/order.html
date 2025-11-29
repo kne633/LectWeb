@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="bookstore.css">
+        <link rel="stylesheet" type="text/css" href="book.css">
+    </head>
+    <body id="order">
+    <div class="head"> 서적 주문 양식 </div>
+    <form action="">
+        <p> 주문서 </p>
+        <table>
+            <tr> <th> 책 제목 </th> <th> 가격 </th> <th> 수량 </th> <th> 합계 </th> </tr>
+            <tr>
+                <td> 트렌드코리아 </td> <td> 18,000원 </td>
+                <td> <input id="book1" type="text" size= "2" value="0"
+                                    onclick="this.select();"/> </td>
+                <td> <input id="book1tot" type="text" size= "6" value="0"/> 원</td>
+            </tr>
+            <tr>
+                <td> 어른의 품위 <td> 17,550원 </td>
+                <td> <input id="book2" type="text" size= "2" value="0"
+                                    onclick="this.select();"/> </td>
+                <td> <input id="book2tot" type="text" size= "6" value="0"/> 원</td>
+            </tr>
+            <tr>
+                <td> 절창 </td> <td> 16,200원 </td>
+                <td> <input id="book3" type="text" size= "2" value="0"
+                                    onclick="this.select();"/> </td>
+                <td> <input id="book3tot" type="text" size= "6" value="0"/> 원</td>
+            </tr>
+            <tr>
+                <td> 처음 만나는 양자의 세계 </td> <td> 17,100원 </td>
+                <td> <input id="book4" type="text" size= "2" value="0"
+                                    onclick="this.select();"/> </td>
+                <td> <input id="book4tot" type="text" size= "6" value="0"/> 원</td>
+            </tr>
+            <tr>
+                <td> 어른의 행복은 조용하다 </td> <td> 16,020원 </td>
+                <td> <input id="book5" type="text" size= "2" value="0"
+                                    onclick="this.select();"/> </td>
+                <td> <input id="book5tot" type="text" size= "6" value="0"/> 원</td>
+            </tr>
+            <tr>
+                <td> 2026 임용 면접레시피 평가원 </td> <td> 32,400원 </td>
+                <td> <input id="book6" type="text" size= "2" value="0"
+                                    onclick="this.select();"/> </td>
+                <td> <input id="book6tot" type="text" size= "6" value="0"/> 원</td>
+            </tr>
+            <tr>
+                <td> 괴테는 모든 것을 말했다 </td> <td> 15,300원 </td>
+                <td> <input id="book7" type="text" size= "2" value="0"
+                                    onclick="this.select();"/> </td>
+                <td> <input id="book7tot" type="text" size= "6" value="0"/> 원</td>
+            </tr>
+            <tr>
+                <td> 지각의 현상화 </td> <td> 37,800원 </td>
+                <td> <input id="book8" type="text" size= "2" value="0"
+                                    onclick="this.select();"/> </td>
+                <td> <input id="book8tot" type="text" size= "6" value="0"/> 원</td>
+            </tr>
+            <tr>
+                <td> 위버멘쉬 </td> <td> 16,020원 </td>
+                <td> <input id="book9" type="text" size= "2" value="0"
+                                    onclick="this.select();"/> </td>
+                <td> <input id="book9tot" type="text" size= "6" value="0"/> 원</td>
+            </tr>
+            <tr>
+                <td> 프로젝트 헤일메리 </td> <td> 19,800원 </td>
+                <td> <input id="book10" type="text" size= "2" value="0"
+                                    onclick="this.select();"/> </td>
+                <td> <input id="book10tot" type="text" size= "6" value="0"/> 원</td>
+            </tr>
+            <tr>
+                <td> 렛뎀 이론 </td> <td> 18,000원 </td>
+                <td> <input id="book11" type="text" size= "2" value="0"
+                                    onclick="this.select();"/> </td>
+                <td> <input id="book11tot" type="text" size= "6" value="0"/> 원</td>
+            </tr>
+            <tr>
+                <td> 사탄탱고 </td> <td> 17,820원 </td>
+                <td> <input id="book12" type="text" size= "2" value="0"
+                                    onclick="this.select();"/> </td>
+                <td> <input id="book12tot" type="text" size= "6" value="0"/> 원</td>
+            </tr>
+            <tr>
+                <td> 합계 </td> <td> &nbsp; </td>
+                <td> <input id="totnum" type="text" size= "2" value="0"
+                                    onclick="this.select();"/> </td>
+                <td> <input id="totprice" type="text" size= "6" value="0"/> 원</td>
+            </tr>
+        </table> <br />
+        <input id="cal" type="button" value="합계계산" onclick="updateAll();"/>
+        <input type="reset" value="초기화"/>
+        <input type="button" value="주문하기" onclick="showorder();"/>
+</form>
+<div id="orderheader" class="head">주문 내역</div>
+<table id="orderlist" border="1">
+    <tr>
+        <th>책 제목</th>
+        <th>수량</th>
+        <th>가격</th>
+        <th>합계</th>
+    </tr>
+</table>
+
+<script type="text/javascript">
+
+function updateAll() {
+    var n1 = document.getElementById("book1").value;
+    var n2 = document.getElementById("book2").value;
+    var n3 = document.getElementById("book3").value;
+    var n4 = document.getElementById("book4").value;
+    var n5 = document.getElementById("book5").value;
+    var n6 = document.getElementById("book6").value;
+    var n7 = document.getElementById("book7").value;
+    var n8 = document.getElementById("book8").value;
+    var n9 = document.getElementById("book9").value;
+    var n10 = document.getElementById("book10").value;
+    var n11 = document.getElementById("book11").value;
+    var n12 = document.getElementById("book12").value;
+
+    var p1 = 18000 * n1;
+    var p2 = 17550 * n2;
+    var p3 = 16200 * n3;
+    var p4 = 17100 * n4;
+    var p5 = 16020 * n5;
+    var p6 = 32400 * n6;
+    var p7 = 15300 * n7;
+    var p8 = 37800 * n8;
+    var p9 = 16020 * n9;
+    var p10 = 19800 * n10;
+    var p11 = 18000 * n11;
+    var p12 = 17820 * n12;
+    
+    document.getElementById("book1tot").value = p1;
+    document.getElementById("book2tot").value = p2;
+    document.getElementById("book3tot").value = p3;
+    document.getElementById("book4tot").value = p4;
+    document.getElementById("book5tot").value = p5;
+    document.getElementById("book6tot").value = p6;
+    document.getElementById("book7tot").value = p7;
+    document.getElementById("book8tot").value = p8;
+    document.getElementById("book9tot").value = p9;
+    document.getElementById("book10tot").value = p10;
+    document.getElementById("book11tot").value = p11;
+    document.getElementById("book12tot").value = p12;
+
+	var totnum = parseInt(n1) + parseInt(n2) + parseInt(n3)+
+                parseInt(n4) + parseInt(n5) + parseInt(n6)+
+                parseInt(n7) + parseInt(n8) + parseInt(n9)+
+                parseInt(n10) + parseInt(n11) + parseInt(n12);
+    document.getElementById("totnum").value = totnum;
+	var totprice = p1 + p2 + p3 + p4 + p5 + p6 + p7 + p8 + p9 + p10 + p11 + p12;
+    document.getElementById("totprice").value = totprice;
+}
+function showorder(){
+    const userid = localStorage.getItem("userid");
+
+    if(!userid){
+        alert("로그인 후 이용해주세요.");
+        location.href="login.html";
+        return;
+    }
+    alert(userid+"님의 주문내역입니다.");
+    prnlist();
+}
+
+function prnlist(){
+    const bookprice = [18000,17550,16200,17100,16020,32400,15300,37800,16020,19800,18000,17820];
+    const bookname = [
+    "트렌드코리아","어른의 품위","절창","처음 만나는 양자의 세계",
+    "어른의 행복은 조용하다","2026 임용 면접레시피 평가원","괴테는 모든 것을 말했다",
+    "지각의 현상화","위버멘쉬","프로젝트 헤일메리","렛뎀 이론","사탄탱고"
+];
+    const orderlist = document.getElementById("orderlist");
+    document.getElementById("orderheader").style.display="block";
+    orderlist.style.display="table";
+    orderlist.innerHTML=`
+        <tr>
+            <th>책 제목</th>
+            <th>수량</th>
+            <th>가격</th>
+            <th>합계</th>
+        </tr>
+        `;
+        let totnum=0;
+        let totprice=0;
+        for(let i=1;i<=12;i++){
+            const num=parseInt(document.getElementById("book"+i).value) || 0;
+            const tot=parseInt(document.getElementById("book"+i+"tot").value) || 0;
+            const price=tot/(num||1);
+
+            if(num>0){
+                let row=orderlist.insertRow();
+                row.insertCell(0).innerText=bookname[i-1];
+                row.insertCell(1).innerText=num;
+                row.insertCell(2).innerText=price.toLocaleString()+"원";
+                row.insertCell(3).innerText=tot.toLocaleString()+"원";
+
+                totnum+=num;
+                totprice+=tot;
+            }
+        }
+
+        let final=orderlist.insertRow();
+        final.insertCell(0).innerText="합계";
+        final.insertCell(1).innerText=totnum.toLocaleString();
+        final.insertCell(2).innerText="-";
+        final.insertCell(3).innerText=totprice.toLocaleString()+"원";
+}
+function checkcal(){
+    let tf=false;
+    for(let i=1;i<=12;i++){
+        let num=parseInt(document.getElementById("book"+i).value) || 0;
+        if (num>0){
+            tf=true;
+            break;
+        }
+    }
+    document.getElementById("cal").disabled=!tf;
+}
+window.onload=function(){
+    for(let i=1;i<=12;i++){
+        document.getElementById("book"+i).addEventListener("input",checkcal);
+    }
+    document.getElementById("cal").disabled=true;
+    document.getElementById("orderheader").style.display="none";
+    document.getElementById("orderlist").style.display="none";
+}
+const orderform =document.querySelector("form");
+orderform.addEventListener('reset', function() {
+    setTimeout(function() {
+        checkcal();
+        document.getElementById("orderheader").style.display="none";
+        document.getElementById("orderlist").style.display="none";
+    },0);
+});
+</script>
+</body>
+</html>

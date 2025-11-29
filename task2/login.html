@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="bookstore.css">
+        <link rel="stylesheet" type="text/css" href="book.css">
+    </head>
+    <body id="login">
+        <form id="loginform">    
+            <a>회원가입</a>
+            <a>아이디/비밀번호찾기</a>
+            <fieldset>
+                <span>아이디</span>
+                <input id="username" type="text"/><br/>
+                <span>비밀번호</span>
+                <input id="password" type="password"><br/>
+                <span></span>
+                <input id="login_button" type="submit" value="로그인" />
+                <input id="reset" type="button" value="취소" />
+            </fieldset>
+        </form>
+        <script type="text/javascript">
+            localStorage.removeItem("userid");
+            document.getElementById("loginform").addEventListener("submit", function(e) {
+                e.preventDefault();
+                const username=document.getElementById("username").value.trim();
+                const password=document.getElementById("password").value.trim();
+                if(username === ""){
+                    alert("아이디를 입력해주세요");
+                    document.getElementById("username").focus();
+                    return;
+                }
+                if(password === ""){
+                    alert("비밀번호를 입력해주세요");
+                    document.getElementById("password").focus();
+                    return;
+                }
+                localStorage.setItem("userid",username);
+                alert(username+"님 로그인 되었습니다.");
+                location.href="order.html";
+            });
+            document.getElementById("reset").addEventListener("click",function(){
+                document.getElementById("username").value="";
+                document.getElementById("password").value="";
+            });
+        </script>
+    </body>
+</html>
