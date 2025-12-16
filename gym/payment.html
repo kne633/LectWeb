@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment</title>
+    <link rel="stylesheet" href="design.css">
+    <style>
+        body {
+            background: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .box {
+            background: white;
+            width: 420px;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        .pay-method {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.pay-item {
+    flex: 1;
+    height: 90px;
+    border: 2px solid #ccc;
+    border-radius: 14px;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    transition: all 0.2s ease;
+}
+
+/* 라디오 버튼 완전히 숨기기 */
+.pay-item input[type="radio"] {
+    display: none;
+}
+
+/* 선택된 카드 */
+.pay-item:has(input[type="radio"]:checked) {
+    border-color: #2a5298;
+    background: #f0f4ff;
+    color: #2a5298;
+}
+
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2a5298;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #2a5298;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1e3c72;
+        }
+
+        .info {
+            text-align: center;
+            font-size: 18px;
+            color: #2ecc71;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>결제 페이지</h2>
+    <div id="payment-area"></div>
+</div>
+
+<script>
+/* 로그인 체크 */
+if (localStorage.getItem("isLogin") !== "true") {
+    alert("로그인 후 이용 가능합니다.");
+    location.href = "login.html";
+}
+
+const loginId = localStorage.getItem("loginId");
+const paidKey = `isPaid_${loginId}`;
+const expiresKey = `expiresAt_${loginId}`;
+const paymentArea = document.getElementById("payment-area");
+
+let basePrice = 0;
+let couponApplied = false;
+
+/* ===== 결제 상태 + 만료 체크 ===== */
+const paid = localStorage.getItem(paidKey);
+const expiresAt = localStorage.getItem(expiresKey);
+
+let isValidPayment = false;
+
+if (paid === "true" && expiresAt) {
+    const now = new Date();
+    const expireDate = new Date(expiresAt);
+
+    if (expireDate > now) {
+        isValidPayment = true;
+    } else {
+        // 만료된 경우 → 결제 정보 초기화
+        localStorage.removeItem(paidKey);
+        localStorage.removeItem(expiresKey);
+    }
+}
+
+/* ===== 화면 표시 ===== */
+if (isValidPayment) {
+    paymentArea.innerHTML = `<p class="info">이미 결제가 완료되었습니다.</p>`;
+} else {
+    paymentArea.innerHTML = `
+        <select id="month" onchange="updatePrice()">
+            <option value="">개월 수 선택</option>
+            ${Array.from({ length: 12 }, (_, i) =>
+                `<option value="${i + 1}">${i + 1}개월</option>`
+            ).join("")}
+        </select>
+
+        <div class="pay-method">
+            <label class="pay-item">
+                <span>현금</span>
+                <input type="radio" name="payMethod" value="cash">
+            </label>
+
+            <label class="pay-item">
+                <span>카드</span>
+                <input type="radio" name="payMethod" value="card">
+            </label>
+        </div>
+
+        <input type="text" id="coupon" placeholder="쿠폰 코드 입력">
+        <button onclick="applyCoupon()">쿠폰 확인</button>
+
+        <div class="price" id="price">결제 금액: 0원</div>
+
+        <button onclick="pay()">결제하기</button>
+    `;
+}
+
+/* ===== 금액 계산 ===== */
+function updatePrice() {
+    const month = Number(document.getElementById("month").value);
+    couponApplied = false;
+
+    if (!month) {
+        document.getElementById("price").innerText = "결제 금액: 0원";
+        return;
+    }
+
+    basePrice = month * 10000;
+
+    /* 3개월 단위 자동 할인 */
+    const discount = Math.floor(month / 3) * 1000;
+    basePrice -= discount;
+
+    document.getElementById("price").innerText =
+        "결제 금액: " + basePrice.toLocaleString() + "원";
+}
+
+/* ===== 쿠폰 적용 ===== */
+function applyCoupon() {
+    const coupon = document.getElementById("coupon").value.trim();
+
+    if (!basePrice) {
+        alert("먼저 개월 수를 선택하세요.");
+        return;
+    }
+
+    if (coupon === "X-mas") {
+        if (couponApplied) {
+            alert("이미 쿠폰이 적용되었습니다.");
+            return;
+        }
+
+        basePrice = Math.floor(basePrice * 0.8);
+        couponApplied = true;
+
+        document.getElementById("price").innerText =
+            "결제 금액: " + basePrice.toLocaleString() + "원";
+
+        alert("쿠폰이 적용되었습니다. (20% 할인)");
+    } else {
+        alert("유효하지 않은 쿠폰입니다.");
+    }
+}
+
+/* ===== 결제 ===== */
+function pay() {
+    const month = Number(document.getElementById("month").value);
+    const method = document.querySelector("input[name='payMethod']:checked");
+
+    if (!month) {
+        alert("개월 수를 선택하세요.");
+        return;
+    }
+
+    if (!method) {
+        alert("결제 방법(현금/카드)을 선택하세요.");
+        return;
+    }
+
+    /* 결제 완료 처리 */
+    localStorage.setItem(paidKey, "true");
+
+    /* 만료일 계산 (개월 × 30일) */
+    const today = new Date();
+    today.setDate(today.getDate() + (month * 30));
+
+    localStorage.setItem(
+        expiresKey,
+        today.toISOString()
+    );
+
+    alert("결제가 완료되었습니다.");
+    location.href = "mypage.html";
+}
+</script>
+
+
+
+</body>
+</html>
+

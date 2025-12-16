@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<style>
+    body {
+        margin: 0;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #1e3c72, #2a5298);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Arial', sans-serif;
+        padding-top: 50px;
+    }
+
+    .box {
+        background: white;
+        width: 360px;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        text-align: center;
+    }
+
+    .box h2 {
+        margin-bottom: 20px;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        box-sizing: border-box;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background: #2a5298;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s;
+        margin-bottom: 10px;
+    }
+
+    button:hover {
+        background: #1e3c72;
+    }
+
+    .info {
+        font-size: 16px;
+        font-weight: bold;
+        color: #e74c3c;
+        margin-bottom: 12px;
+        min-height: 20px;
+    }
+
+    .small-link {
+        font-size: 14px;
+        color: #2a5298;
+        cursor: pointer;
+        margin-top: 8px;
+        display: inline-block;
+        text-decoration: underline;
+    }
+
+    /* 모달 스타일 */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.4);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .modal-content {
+        background: white;
+        padding: 30px 20px;
+        border-radius: 12px;
+        width: 320px;
+        text-align: center;
+        position: relative;
+    }
+
+    .modal-content h3 {
+        margin-bottom: 15px;
+        color: #2a5298;
+    }
+
+    .modal-content input {
+        width: 100%;
+        margin-bottom: 12px;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 10px; right: 10px;
+        background: none;
+        border: none;
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
+        color: #999;
+        padding: 0;
+        line-height: 1;
+    }
+
+    .close-btn:hover {
+        color: #333;
+        background: none;
+    }
+
+    .modal-info {
+        font-size: 14px;
+        font-weight: bold;
+        min-height: 20px;
+        margin-bottom: 10px;
+        color: #e74c3c;
+    }
+</style>
+</head>
+<body>
+
+<div class="box">
+    <h2>로그인</h2>
+    <div class="info" id="msg"></div>
+    <input type="text" id="id" placeholder="ID">
+    <input type="password" id="pw" placeholder="PW">
+    <button onclick="login()">로그인</button>
+    <div>
+        <span class="small-link" onclick="openModal('id')">아이디 찾기</span> |
+        <span class="small-link" onclick="openModal('pw')">비밀번호 찾기</span>
+    </div>
+</div>
+
+<!-- 모달 -->
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <button class="close-btn" onclick="closeModal()">&emsp;✕</button>
+        <div class="modal-info" id="modal-msg"></div>
+        <div id="id-modal" style="display:none;">
+            <h3>아이디 찾기</h3>
+            <input type="text" id="findName" placeholder="이름">
+            <input type="password" id="findPw" placeholder="패스워드">
+            <button onclick="findId()">검색</button>
+        </div>
+        <div id="pw-modal" style="display:none;">
+            <h3>비밀번호 찾기</h3>
+            <input type="text" id="findName2" placeholder="이름">
+            <input type="text" id="findId2" placeholder="ID">
+            <button onclick="findPw()">검색</button>
+        </div>
+    </div>
+</div>
+
+<script>
+// 로그인 기능
+function getUsers() {
+    const users = localStorage.getItem("users");
+    return users ? JSON.parse(users) : {};
+}
+
+function login() {
+    const id = document.getElementById("id").value.trim();
+    const pw = document.getElementById("pw").value.trim();
+    const msg = document.getElementById("msg");
+
+    if (!id || !pw) {
+        msg.innerText = "아이디와 패스워드를 입력해주세요.";
+        return;
+    }
+
+    const users = getUsers();
+    if (!users[id]) {
+        msg.innerText = "존재하지 않는 아이디입니다.";
+        return;
+    }
+
+    if (users[id].password !== pw) {
+        msg.innerText = "비밀번호가 올바르지 않습니다.";
+        return;
+    }
+
+    localStorage.setItem("isLogin", "true");
+    localStorage.setItem("loginId", id);
+    localStorage.setItem("loginUser", users[id].name);
+
+    alert("로그인 성공!");
+    location.href = "mypage.html";
+}
+
+// 모달 열기
+function openModal(type) {
+    document.getElementById("modal").style.display = "flex";
+    document.getElementById("modal-msg").innerText = "";
+    document.getElementById("id-modal").style.display = (type === 'id') ? 'block' : 'none';
+    document.getElementById("pw-modal").style.display = (type === 'pw') ? 'block' : 'none';
+}
+
+// 모달 닫기
+function closeModal() {
+    document.getElementById("modal").style.display = "none";
+}
+
+// 아이디 찾기
+function findId() {
+    const name = document.getElementById("findName").value.trim();
+    const pw = document.getElementById("findPw").value.trim();
+    const msg = document.getElementById("modal-msg");
+
+    if (!name || !pw) {
+        msg.innerText = "이름과 패스워드를 입력해주세요.";
+        msg.style.color = "#e74c3c";
+        return;
+    }
+
+    const users = getUsers();
+    for (const id in users) {
+        if (users[id].name === name && users[id].password === pw) {
+            msg.style.color = "green";
+            msg.innerText = `회원님의 ID는 "${id}" 입니다.`;
+            return;
+        }
+    }
+    msg.style.color = "#e74c3c";
+    msg.innerText = "일치하는 정보가 없습니다.";
+}
+
+// 비밀번호 찾기
+function findPw() {
+    const name = document.getElementById("findName2").value.trim();
+    const id = document.getElementById("findId2").value.trim();
+    const msg = document.getElementById("modal-msg");
+
+    if (!name || !id) {
+        msg.innerText = "이름과 아이디를 입력해주세요.";
+        msg.style.color = "#e74c3c";
+        return;
+    }
+
+    const users = getUsers();
+    if (users[id] && users[id].name === name) {
+        msg.style.color = "green";
+        msg.innerText = `회원님의 비밀번호는 "${users[id].password}" 입니다.`;
+    } else {
+        msg.style.color = "#e74c3c";
+        msg.innerText = "일치하는 정보가 없습니다.";
+    }
+}
+</script>
+
+</body>
+</html>
+
+
+

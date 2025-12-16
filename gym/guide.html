@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="design.css">
+</head>
+<body>
+    <div class="content c5">
+        <h1 class="intro-title">운동기구 및 사용방법 안내</h1>
+        <hr color="darkblue">
+        <p>• 헬스장 보유 운동기구 및 사용 방법 안내(클릭)</p>
+
+        <!-- 보유 운동기구 -->
+        <div class="equipment-list">
+            <div class="equipment-card" onclick="showExercise('bench')">
+                <img src="bench.jpg" alt="벤치프레스" />
+                <div class="equipment-name">벤치프레스</div>
+            </div>
+            <div class="equipment-card" onclick="showExercise('leg-press')">
+                <img src="legpress.jpg" alt="래그프레스" />
+                <div class="equipment-name">래그프레스</div>
+            </div>
+            <div class="equipment-card" onclick="showExercise('lat')">
+                <img src="lat.jpg" alt="랫풀다운" />
+                <div class="equipment-name">랫풀다운</div>
+            </div>
+        </div>
+
+        <!-- 운동 사용법 상세 -->
+        <div id="exercise-detail">
+            <div id="bench" class="exercise" style="display:none;">
+                <h2>벤치프레스</h2>
+                <div class="exercise-content">
+                    <img src="muscle-chest.jpg" alt="가슴 근육" class="muscle-img"/>
+                    <div class="exercise-info">
+                        <h3>• 벤치프레스는 가슴 근육을 강화하는 운동입니다.</h3>
+                        <iframe width="450" height="280" src="https://www.youtube.com/embed/FN4zDtiy3Gg?si=7FR4EH1z1vjWe8ft&amp;start=14" 
+                        title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+                        gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div id="leg-press" class="exercise" style="display:none;">
+                <h2>레그 프레스</h2>
+                <div class="exercise-content">
+                    <img src="muscle-leg.jpg" alt="하체 근육" class="muscle-img"/>
+                    <div class="exercise-info">
+                        <h3>• 레그 프레스는 하체 근육을 강화하는 운동입니다.</h3>
+                        <iframe width="450" height="280" src="https://www.youtube.com/embed/IWd5UExkw7E?si=JR0wZHYptZiR4rh8&amp;start=14"
+                        title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+                         gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div id="lat" class="exercise" style="display:none;">
+                <h2>랫풀다운</h2>
+                <div class="exercise-content">
+                    <img src="muscle-back.jpg" alt="등 근육" class="muscle-img"/>
+                    <div class="exercise-info">
+                        <h3>• 랫풀다운은 등 근육을 강화하는 운동입니다.</h3>
+                        <iframe width="450" height="280" src="https://www.youtube.com/embed/xjEXS1CHxDM?si=lNLmeKwfjlfL3nFs&amp;start=7" 
+                        title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+                        gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function showExercise(id) {
+        const exercises = document.querySelectorAll('.exercise');
+        exercises.forEach(ex => ex.style.display = 'none');
+
+        const selected = document.getElementById(id);
+        if(selected) selected.style.display = 'block';
+        selected.scrollIntoView({ behavior: 'smooth' });
+    }
+    </script>
+</body>

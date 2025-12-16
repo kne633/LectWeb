@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="design.css">
+        <title>상명 스포츠센터</title>
+    <style>
+        #name {color:darkblue; font-size: 30pt; text-decoration: none; font-weight: bold;}
+    </style>
+    </head>
+    <body>
+        <div class="every">
+        <div class="top">
+            
+            <img src="sm1.png" width="70" alt="헬스장사진">
+            <a id="name" href="main.html">스포츠센터</a>
+            <a class="join" id="j1" href="login.html" target="display_k">로그인</a >&nbsp;| 
+            <a class="join" href="signup.html" target="display_k">회원가입</a>
+        </div>
+        <div class="menu">
+            <a href="intro.html" target="display_k" onclick="setActive(this)">헬스장 소개</a>
+            <a href="notice.html" target="display_k" onclick="setActive(this)">공지사항</a>
+            <a href="guide.html" target="display_k" onclick="setActive(this)">운동 안내</a>
+            
+            <div class="menu-right">
+                <a href="mypage.html" target="display_k" onclick="setActive(this)">개인페이지</a>
+                <a href="info.html" target="display_k" onclick="setActive(this)">고객센터</a>
+            </div>
+        </div>
+        <div class="notice-banner">
+            <a href="notice.html?type=recruit" target="display_k" class="notice-item">
+                <h3>🏋️ 12월 모집 안내</h3>
+                <span class="tag recruit">모집</span>
+            </a>
+            <a href="notice.html?type=event" target="display_k" class="notice-item">
+                <h3>🎄 Christmas 이벤트</h3>
+                <span class="tag event">이벤트</span>
+            </a>
+        </div>
+
+        <hr>
+        <iframe name="display_k" src="sportcenter.jpg" width="870" height="655" alt="헬스장사진"></iframe>
+        <hr>
+        <div id="copyright">
+            Copyright (c) webp gymsite 202520898 KwonNaeun
+        </div>
+        <a class="link_img" href="https://www.smu.ac.kr/kor/index.do">
+            <img src="sm2.jpg" height="40" alt="상명대 홈페이지">
+        </a>
+        </div>
+        <script>
+            function setActive(clicked) {
+                const menus = document.querySelectorAll('.menu a');
+                menus.forEach(menu => menu.classList.remove('active'));
+                clicked.classList.add('active');
+            }
+            window.onload = function() {
+                const banner = document.querySelector(".notice-banner");
+                if(!banner) return;
+
+                // 부모 페이지에서만 배너 표시
+                const parentPage = window.location.pathname.split("/").pop();
+
+                if(parentPage === "main.html") {
+                    banner.style.display = "flex";
+                } else {
+                    banner.style.display = "none";
+                }
+
+                // iframe 안에서 notice.html을 로드했을 때, 부모 배너는 표시 X
+                const iframe = document.querySelector('iframe[name="display_k"]');
+                if(iframe) {
+                    iframe.onload = function() {
+                        const iframePage = iframe.contentWindow.location.pathname.split("/").pop();
+                        banner.style.display = "none";
+                    
+                    }
+                }
+            };
+        </script>
+    </body>
+</html>

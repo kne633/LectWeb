@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .signup-box {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            width: 400px;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        input, button {
+            height: 48px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        input {
+            width: 100%;
+            padding: 0 12px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .id-check-wrapper {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .id-check-wrapper input {
+            flex: 1;
+        }
+
+        button {
+            width: 100%;
+            background: #2a5298;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #1e3c72;
+        }
+
+        .check-btn {
+            width: 120px;
+            background: #2a5298;  
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            flex-shrink: 0;
+        }
+
+        .check-btn:hover {
+            background: #1e3c72;    
+            transform: translateY(-2px);
+        }
+        .check-btn:active {
+            transform: translateY(0);
+        }
+
+        .info {
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+            min-height: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="signup-box">
+    <h2>회원가입</h2>
+    <div class="info" id="msg"></div>
+
+    <input type="text" id="name" placeholder="이름">
+    
+    <div class="id-check-wrapper">
+        <input type="text" id="userId" placeholder="아이디">
+        <button type="button" class="check-btn" onclick="checkId()">중복확인</button>
+    </div>
+
+    <input type="password" id="password" placeholder="패스워드">
+    <button onclick="signup()">회원가입</button>
+</div>
+
+<script>
+let isIdChecked = false; // 아이디 중복 확인 여부
+
+// 기존 회원정보 불러오기
+function getUsers() {
+    const users = localStorage.getItem("users");
+    return users ? JSON.parse(users) : {};
+}
+
+// 아이디 중복 확인
+function checkId() {
+    const userId = document.getElementById("userId").value.trim();
+    const msg = document.getElementById("msg");
+
+    if (!userId) {
+        msg.innerText = "아이디를 입력해주세요.";
+        isIdChecked = false;
+        return;
+    }
+
+    const users = getUsers();
+    if (users[userId]) {
+        msg.innerText = "이미 사용 중인 아이디입니다.";
+        isIdChecked = false;
+    } else {
+        msg.innerText = "사용 가능한 아이디입니다.";
+        isIdChecked = true;
+    }
+}
+
+// 회원가입
+function signup() {
+    const name = document.getElementById("name").value.trim();
+    const userId = document.getElementById("userId").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const msg = document.getElementById("msg");
+
+    if (!name || !userId || !password) {
+        msg.innerText = "모든 항목을 입력해주세요.";
+        return;
+    }
+
+    if (!isIdChecked) {
+        msg.innerText = "아이디 중복 확인을 해주세요.";
+        return;
+    }
+
+    const users = getUsers();
+    users[userId] = { name, password }; // 새 회원 추가
+    localStorage.setItem("users", JSON.stringify(users));
+
+    alert("회원가입이 완료되었습니다.");
+    location.href = "login.html"; // 가입 후 로그인 페이지 이동
+}
+</script>
+
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>My Page</title>
+    <link rel="stylesheet" href="design.css">
+</head>
+<body>
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+        margin: 0;
+        background: #f4f6f9;
+    }
+
+    /* 전체 컨테이너 */
+    .mypage-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 40px 20px;
+    }
+
+    /* 헤더 */
+    .mypage-header {
+        margin-bottom: 40px;
+    }
+
+    .mypage-header h1 {
+        margin: 0;
+        font-size: 32px;
+    }
+
+    .mypage-header p {
+        color: #666;
+    }
+
+    /* 카드 그리드 */
+    .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+
+    /* 카드 */
+    .card {
+        background: white;
+        padding: 25px;
+        border-radius: 14px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    .card h3 {
+        margin-top: 0;
+        margin-bottom: 15px;
+    }
+
+    /* 강조 텍스트 */
+    .highlight {
+        font-size: 26px;
+        font-weight: bold;
+        color: #2a5298;
+        margin-top: 10px;
+    }
+
+    .big-text {
+        font-size: 14px;
+        color: #666;
+    }
+
+    /* 상태 */
+    .success {
+        color: #2ecc71;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    /* 버튼 */
+    button {
+        width: 100%;
+        padding: 12px;
+        background: #2a5298;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #1e3c72;
+    }
+
+    /* 아웃라인 버튼 */
+    button.outline {
+        background: transparent;
+        color: #2a5298;
+        border: 2px solid #2a5298;
+    }
+
+    button.outline:hover {
+        background: #2a5298;
+        color: white;
+    }
+    .logout-area {
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    .logout-btn {
+        padding: 12px 30px;
+        background: #e74c3c;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .logout-btn:hover {
+        background: #c0392b;
+    }
+
+    #remain-days {
+        font-weight: bold;
+        color: #2a5298;
+    }
+    .highlight {
+    letter-spacing: 4px;
+}
+/* 사물함 이용 불가 강조 메시지 */
+.locker-block {
+    background: #fff5f5;
+    border: 2px dashed #e74c3c;
+    color: #e74c3c;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 18px;
+    border-radius: 12px;
+    text-align: center;
+    pointer-events: none;
+}
+/* 사물함 버튼 클릭 보장 */
+#locker-area button {
+    position: relative;
+    z-index:20;
+    pointer-events: auto;
+}
+
+</style>
+<div class="mypage-container">
+
+    <!-- 상단 -->
+    <header class="mypage-header">
+        <h1>My Page</h1>
+        <p>회원 정보 및 이용 현황</p>
+    </header>
+
+    <!-- 카드 영역 -->
+    <section class="card-grid">
+
+        <!-- 회원 정보 -->
+        <div class="card">
+            <h3>회원 정보</h3>
+            <p><strong>ID</strong> : <span id="user-id"></span></p>
+            <p><strong>이름</strong> : <span id="user-name"></span></p>
+            <p><strong>등록 현황</strong> : <span id="reg-status"></span></p>
+            <p><strong>남은 기간</strong> : <span id="remain-days"></span></p>
+
+        </div>
+
+        <!-- 사물함 -->
+        <div class="card">
+            <h3>사물함</h3>
+            <div id="locker-area"></div>
+        </div>
+
+        <!-- 결제 -->
+        <div class="card">
+            <h3>결제 정보</h3>
+            <div id="payment-area"></div>
+        </div>
+
+    </section>
+</div>
+<div class="logout-area">
+    <button class="logout-btn" onclick="logout()">로그아웃</button>
+</div>
+
+<script>
+// 로그인 체크
+if (localStorage.getItem("isLogin") !== "true") {
+    alert("로그인 후 이용 가능합니다.\n로그인 페이지로 이동합니다.");
+    location.href = "login.html";
+}
+</script>
+
+<script>
+const loginId = localStorage.getItem("loginId");
+const loginName = localStorage.getItem("loginUser");
+
+document.getElementById("user-id").innerText = loginId;
+document.getElementById("user-name").innerText = loginName;
+
+/* ===== 결제 여부 ===== */
+const paidKey = `isPaid_${loginId}`;
+const paid = localStorage.getItem(paidKey);
+
+/* ===== 등록 현황 / 남은 기간 ===== */
+const regStatus = document.getElementById("reg-status");
+const remainText = document.getElementById("remain-days");
+
+if (paid === "true") {
+    const expiresAtStr = localStorage.getItem(`expiresAt_${loginId}`);
+
+    if (expiresAtStr) {
+        const expiresAt = new Date(expiresAtStr);
+        const today = new Date();
+        const diffTime = expiresAt - today;
+        const remainDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+        if (remainDays > 0) {
+            regStatus.innerText = "등록됨";
+            remainText.innerText = `${remainDays}일 남았습니다.`;
+        } else {
+            regStatus.innerText = "만료";
+            remainText.innerText = "이용 기간이 종료되었습니다.";
+        }
+    } else {
+        regStatus.innerText = "등록전";
+        remainText.innerText = "-";
+    }
+} else {
+    regStatus.innerText = "등록전";
+    remainText.innerText = "-";
+}
+
+/* ===== 사물함 ===== */
+const lockerArea = document.getElementById("locker-area");
+const lockerKey = `lockerPw_${loginId}`;
+const lockerPw = localStorage.getItem(lockerKey);
+
+let canUseLocker = false;
+
+// 결제 + 만료 여부 확인
+if (paid === "true") {
+    const expiresAtStr = localStorage.getItem(`expiresAt_${loginId}`);
+
+    if (expiresAtStr) {
+        const expiresAt = new Date(expiresAtStr);
+        const today = new Date();
+
+        if (expiresAt > today) {
+            canUseLocker = true;
+        }
+        else {
+            /* 🔥 만료 → 사물함 비밀번호 초기화 */
+            localStorage.removeItem(lockerKey);
+        }
+    }
+}
+function registerLocker() {
+    const pw = prompt("사물함 비밀번호 4자리를 입력하세요");
+    if (pw && pw.length === 4 && !isNaN(pw)) {
+        localStorage.setItem(`lockerPw_${loginId}`, pw);
+        alert("사물함 등록 완료");
+        location.reload(); // 새로고침해서 버튼 + 비밀번호 영역 갱신
+    } else {
+        alert("숫자 4자리만 가능합니다.");
+    }
+}
+
+// ✅ 사물함 사용 가능
+if (canUseLocker) {
+    if (lockerPw) {
+        lockerArea.innerHTML = `
+            <p class="big-text">비밀번호</p>
+            <div class="highlight" id="locker-pw">••••</div>
+            <button class="outline" onclick="toggleLockerPw()">보기</button>
+        `;
+    } else {
+        lockerArea.innerHTML = `
+            <button class="outline" onclick="registerLocker()">사물함 등록</button>
+        `;
+    }
+}
+// ❌ 사물함 사용 불가
+else {
+    lockerArea.innerHTML = `
+        <div class="locker-block">
+            🔒 결제 후 이용 가능합니다
+        </div>
+    `;
+}
+
+
+/* ===== 결제 영역 ===== */
+const paymentArea = document.getElementById("payment-area");
+let canUse =false;
+if (paid === "true") {
+    const expiresAtStr = localStorage.getItem(`expiresAt_${loginId}`);
+
+    if (expiresAtStr) {
+        const expiresAt = new Date(expiresAtStr);
+        const today = new Date();
+
+        if (expiresAt > today) {
+            canUse = true;
+        }
+    }
+}
+
+if (canUse) {
+    paymentArea.innerHTML = `<p class="success">결제 완료</p>`;
+} else {
+    paymentArea.innerHTML = `
+        <button onclick="location.href='payment.html'">온라인 결제</button>
+    `;
+}
+
+/* ===== 로그아웃 ===== */
+function logout() {
+    localStorage.removeItem("isLogin");
+    localStorage.removeItem("loginId");
+    localStorage.removeItem("loginUser");
+
+    alert("로그아웃되었습니다.");
+    location.href = "login.html";
+}
+
+/* ===== 사물함 비밀번호 토글 ===== */
+let isPwVisible = false;
+
+function toggleLockerPw() {
+    const pwArea = document.getElementById("locker-pw");
+    const btn = event.target;
+    const lockerPw = localStorage.getItem(`lockerPw_${loginId}`);
+
+    if (!isPwVisible) {
+        pwArea.innerText = lockerPw;
+        btn.innerText = "숨기기";
+    } else {
+        pwArea.innerText = "••••";
+        btn.innerText = "보기";
+    }
+
+    isPwVisible = !isPwVisible;
+}
+</script>
+
+
+</body>
+</html>
+

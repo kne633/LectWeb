@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="design.css">
+</head>
+<body>
+    <div class="notice-banner">
+        <div class="notice-item" onclick="showRecruit()">
+            <h3>🏋️ 12월 모집 안내</h3>
+            <p>신규 회원 모집 중! 클릭 시 상세페이지로 이동</p>
+            <span class="tag recruit">모집</span>
+        </div>
+        <div class="notice-item" onclick="showEvent()">
+            <h3>🎄 Christmas 이벤트</h3>
+            <p>회원 대상 할인 이벤트! 클릭 시 등록페이지 이동</p>
+            <span class="tag event">이벤트</span>
+        </div>
+    </div>
+    <div id="recruit-content" style="display:none;">
+        <div class="post-header">
+            <div class="meta">글쓴이: 권나은 | 등록일: 2025-12-01</div>
+            <div class="title">🏋️ 12월 신규 회원 모집 안내</div>
+        </div>
+        <div class="post-body">
+            <p>안녕하세요, 상명 스포츠센터입니다.</p>
+            <p>12월 신규 회원 모집을 진행합니다. 관심 있는 분들의 많은 참여 바랍니다.</p>
+            <p>모집 기간: 12월 1일 ~ 12월 31일</p>
+            <p>문의사항: 권나은 담당자 / 010-1234-5678</p>
+            <hr>
+            ※ 신청한 기간부터 1달(31일) 이용 가능합니다.
+        </div>
+    </div>
+    <script>
+        function showRecruit() {
+        const banner = document.querySelector('.notice-banner');
+        const recruitContent = document.getElementById('recruit-content');
+        if(banner) banner.style.display = 'none';
+        if(recruitContent) recruitContent.style.display = 'block';
+        recruitContent.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function showEvent() {
+        const banner = document.querySelector('.notice-banner');
+        if(banner) banner.style.display = 'none';
+        const goRegister = confirm("할인코드: X-mas\n\n등록 페이지로 이동하시겠습니까?");
+        if(goRegister) {
+            // 확인 클릭 → 로그인 페이지 이동
+            window.location.href = "mypage.html";
+        } else {
+            // 취소 클릭 → 배너 다시 표시
+            if(banner) banner.style.display = 'flex';
+        }
+    }
+    
+
+    window.addEventListener('DOMContentLoaded', function() {
+        const params = new URLSearchParams(window.location.search);
+        const type = params.get('type');
+        if(type === 'recruit') showRecruit();
+        else if(type === 'event') showEvent();
+    });
+    </script>
+
+</body>
